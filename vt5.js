@@ -121,8 +121,6 @@ let mymap;
       let etelaisinRasti = [Number.MAX_VALUE];
       let pohjoisinRasti = [Number.MIN_VALUE];
   
-  
-  
       // Piirretään rastit kartalle ja etsitään pohjoisin ja eteläisin rasti, joiden perusteella keskitetään kartta.
       for (let i of data.rastit) {
           let circle = L.circle(
@@ -152,22 +150,13 @@ let mymap;
               pohjoisinRasti = [i.lat, i.lon];
           }
       }
-      
-  
-  
-  
-  
-  
-  
-  
   
       // Keskitetään kartta.
       let corner1 = L.latLng(etelaisinRasti),
           corner2 = L.latLng(pohjoisinRasti),
           bounds = L.latLngBounds(corner1, corner2);
       mymap.fitBounds(bounds);
-  
-  
+ 
   };
   
   function dragstart_handler(e) {
@@ -295,7 +284,6 @@ let mymap;
               }
           }
       }
-  
       return validitRastit;
   }
   
@@ -349,7 +337,6 @@ let mymap;
   
               details1.alkuperainenBoksi = raahattava;
   
-  
               let a1 = document.createElement('a');
               a1.setAttribute('draggable', 'true');
               a1.setAttribute('id', 'kartalla' + "-" + raahattava.joukkueenTiedot.id);
@@ -367,11 +354,8 @@ let mymap;
               ul1.addEventListener("drop", rastiDrop);
               details1.appendChild(ul1);
   
-  
               let validitRastit = haeRastit(raahattava.joukkueenTiedot);
               let indeksit = haeIndeksit(raahattava.joukkueenTiedot);
-  
-              
   
               for (let i in validitRastit) {
                   let li1 = document.createElement('li');
@@ -407,13 +391,7 @@ let mymap;
       }
   
       if (raahattava.className == 'rasti') {
-  
-  
-      
-  
-  
-  
-      
+ 
           if (raahattava == null) {
               return;
           }
@@ -443,8 +421,6 @@ let mymap;
           raahattava.style.position = "absolute";
           raahattava.style.left = mouseX - (raahattava.offsetWidth / 2) + 'px';
           raahattava.style.top = mouseY - (raahattava.offsetHeight / 2) + 'px';
-          
-  
       }
   }
   
@@ -575,8 +551,6 @@ let mymap;
           raahattava.parentElement.parentElement.alkuperainenBoksi.reitti = reitti;
       }
   
-  
-  
       joukkueenReitti2(joukkue);
   }
   
@@ -677,11 +651,7 @@ let mymap;
   
       return rastienKoordinaatit;
   }
-  
-  
-  
-  
-  
+ 
   function joukkueenReitti2(joukkue) {
   
       let joukkueenRastit = [];
@@ -695,22 +665,10 @@ let mymap;
           }
       }
   
-      console.log("     ");
-      console.log("     ");
-      console.log("     ");
-      console.log("     ");
-      console.log("     ");
-      console.log("     ");
-      console.log("     ");
-      console.log("--" + joukkue.nimi + "--");
       for (let i of joukkueenRastit) {
           console.log(haeRastinKoodi(i));
       }
   }
-  
-  
-  
-  
   
   let piirretytReitit = [];
   
@@ -721,7 +679,6 @@ let mymap;
   
       let vari = joukkue.style.getPropertyValue("background-color");
       let polyline = L.polyline(reitti, { color: vari }).addTo(mymap);
-  
   
       piirretytReitit.push(polyline);
       return polyline;
